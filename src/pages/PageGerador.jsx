@@ -1,17 +1,11 @@
 import { useState, useRef } from "react";
-import { ANGULOS, gerarPrompt } from "../data";
+import { ANGULOS, TIPOS, gerarPrompt } from "../data";
 
 const COR_MAP = {
   green: "#22c55e", amber: "#f59e0b", blue: "#3b82f6", red: "#ef4444",
-  purple: "#a855f7", teal: "#14b8a6", orange: "#f97316", indigo: "#6366f1", slate: "#94a3b8",
+  purple: "#a855f7", teal: "#14b8a6", orange: "#f97316", indigo: "#6366f1",
+  slate: "#94a3b8", yellow: "#eab308", rose: "#f43f5e",
 };
-
-const TIPOS = [
-  { id: "copy",      label: "Copy do Site",   desc: "Texto completo das páginas",         icon: "📝" },
-  { id: "vsl",       label: "Script VSL",     desc: "Roteiro com tempo, tela e locução",  icon: "🎬" },
-  { id: "social",    label: "Redes Sociais",  desc: "Reels, Stories, Carrossel, legenda", icon: "📱" },
-  { id: "modelagem", label: "Modelar Copy",   desc: "Melhore uma copy existente com IA",  icon: "✏️" },
-];
 
 export default function PageGerador({ funis = [] }) {
   const [funilId, setFunilId] = useState("");
@@ -50,7 +44,7 @@ export default function PageGerador({ funis = [] }) {
     const cards = JSON.parse(localStorage.getItem("kanban_cards") || "[]");
     cards.unshift({
       id: Date.now(),
-      titulo: `${funil.nome} · ${angulo.nome} · ${TIPOS.find(t=>t.id===tipo)?.label}`,
+      titulo: `${funil.nome} · ${angulo.nome} · ${TIPOS.find(t => t.id === tipo)?.label || tipo}`,
       funil_id: funil.id,
       funil_nome: funil.nome,
       funil_cor: funil.cor,
@@ -180,35 +174,34 @@ export default function PageGerador({ funis = [] }) {
             <div style={{ fontSize: 11, fontWeight: 600, color: "#555", marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>
               3 · Tipo de conteúdo
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              {TIPOS.map((t) => {
-                const sel = tipo === t.id;
-                return (
-                  <button
-                    key={t.id}
-                    onClick={() => setTipo(t.id)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "9px 12px",
-                      borderRadius: 8,
-                      border: sel ? "1px solid #3b82f655" : "1px solid #1a1a1a",
-                      background: sel ? "#3b82f615" : "#0d0d0d",
-                      color: sel ? "#fff" : "#666",
-                      cursor: "pointer",
-                      textAlign: "left",
-                    }}
-                  >
-                    <span style={{ fontSize: 16 }}>{t.icon}</span>
-                    <div>
-                      <div style={{ fontSize: 12, fontWeight: 600 }}>{t.label}</div>
-                      <div style={{ fontSize: 10, color: sel ? "#3b82f688" : "#333" }}>{t.desc}</div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+            {["Site", "Vídeo", "Social", "Ferramenta"].map(grupo => {
+              const itens = TIPOS.filter(t => t.grupo === grupo);
+              return (
+                <div key={grupo} style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 9, color: "#333", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 5 }}>{grupo}</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    {itens.map(t => {
+                      const sel = tipo === t.id;
+                      return (
+                        <button key={t.id} onClick={() => setTipo(t.id)} style={{
+                          display: "flex", alignItems: "center", gap: 10,
+                          padding: "8px 12px", borderRadius: 8,
+                          border: sel ? "1px solid #3b82f655" : "1px solid #1a1a1a",
+                          background: sel ? "#3b82f615" : "#0d0d0d",
+                          color: sel ? "#fff" : "#555", cursor: "pointer", textAlign: "left",
+                        }}>
+                          <span style={{ fontSize: 14, flexShrink: 0 }}>{t.icon}</span>
+                          <div>
+                            <div style={{ fontSize: 12, fontWeight: 600 }}>{t.label}</div>
+                            <div style={{ fontSize: 10, color: sel ? "#3b82f688" : "#333" }}>{t.desc}</div>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Copy para modelar (só aparece se tipo = modelagem) */}

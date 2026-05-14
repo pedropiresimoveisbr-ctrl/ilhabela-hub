@@ -1,3 +1,6 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// PRODUTO
+// ─────────────────────────────────────────────────────────────────────────────
 export const PRODUTO = {
   nome: "Parque Ilha Bela",
   cidade: "Campos dos Goytacazes/RJ",
@@ -22,87 +25,149 @@ Dado real de prova social: 27 contratos assinados e R$ 5,6 milhões em vendas em
 Tom: direto, humano, sem juridiquês. Nunca mencione diretamente a marca MRV no copy público.`,
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 11 ÂNGULOS — ordem original, adaptados para imóvel
+// ─────────────────────────────────────────────────────────────────────────────
 export const ANGULOS = [
   {
     id: "contrario",
+    numero: 1,
     nome: "Contrário",
     emoji: "⚡",
-    descricao: "Quebra o senso comum que o prospect já tem, gerando curiosidade.",
-    exemplo: "Sabe o que a maioria dos especialistas nunca falam?",
+    objetivo: "Quebrar o senso comum que o prospect já tem, gerando curiosidade dentro dele.",
+    descricao: "Contradiz a crença mais forte do público. A headline nega o óbvio e força a pessoa a querer entender por quê.",
+    exemplo_original: "Sabe o que a maioria dos especialistas nunca falam? Que usar metformina não é só ultrapassado — é potencialmente perigoso.",
+    exemplo_imovel: "Sabe o que a maioria dos corretores nunca conta? Que esperar 'ter mais dinheiro guardado' é exatamente o que faz você nunca sair do aluguel.",
     cor: "green",
   },
   {
-    id: "historia",
-    nome: "História",
-    emoji: "📖",
-    descricao: "Storytelling com punch emocional. Protagonista que se identifica com o público.",
-    exemplo: "Riram de mim quando falei que ia comprar meu apê...",
-    cor: "blue",
-  },
-  {
-    id: "curiosidade",
-    nome: "Curiosidade",
-    emoji: "🔍",
-    descricao: "Pega algo do cotidiano e aponta como 'coisa nova' — novo risco ou funcionalidade.",
-    exemplo: "1 a cada 30 moradores de Campos já mora num condomínio fechado pagando menos que aluguel.",
-    cor: "purple",
-  },
-  {
-    id: "conspiracao",
-    nome: "Conspiração",
-    emoji: "🕵️",
-    descricao: "Ângulo 'nós contra eles' — segredos que o mercado esconde do comprador.",
-    exemplo: "O que construtoras e corretores nunca contam sobre o preço de lançamento.",
-    cor: "red",
-  },
-  {
     id: "paradoxal",
+    numero: 2,
     nome: "Ideia Paradoxal",
     emoji: "🔄",
-    descricao: "Pega uma ideia que o prospect já tem e traz para o hook de forma inesperada.",
-    exemplo: "Como pessoas sem dinheiro guardado estão comprando apê — e quem tem está perdendo.",
+    objetivo: "Pegar uma ideia que o prospect já tem e trazer essa ideia para o hook de forma inesperada.",
+    descricao: "O hook usa a própria lógica do prospect contra ele — criando uma contradição que prende a atenção.",
+    exemplo_original: "Como atrizes de Hollywood conseguem perder peso tão rápido para filmes… (E VOCÊ NÃO)",
+    exemplo_imovel: "Como pessoas sem dinheiro guardado estão comprando apartamento em Campos… (E QUEM TEM ESTÁ PERDENDO A OPORTUNIDADE)",
     cor: "orange",
   },
   {
     id: "pop_quiz",
+    numero: 3,
     nome: "Pop Quiz",
     emoji: "❓",
-    descricao: "Quiz estilo 'show do milhão' onde a resposta correta quebra uma crença comum.",
-    exemplo: "Qual dessas opções rende MENOS? A) Poupança B) Tesouro C) FGTS D) Renda variável",
+    objetivo: "Copiar um quiz estilo show do milhão. A resposta correta deve usar o ângulo contrário para quebrar uma crença comum.",
+    descricao: "Engaja pelo formato de quiz. A resposta inesperada gera impacto e abre espaço para a solução.",
+    exemplo_original: "Qual desses alimentos não pode estar na dieta do diabético? A) Frutas  B) Doces  C) Carnes gordurosas  D) Frituras",
+    exemplo_imovel: "Qual dessas opções deixa seu dinheiro encolhendo mais todo mês? A) Poupança  B) Tesouro  C) FGTS parado  D) Aluguel",
     cor: "yellow",
   },
   {
-    id: "truque",
-    nome: "Truque",
-    emoji: "🎯",
-    descricao: "Reivindica facilidade + mistério como solução para uma dor comum.",
-    exemplo: "O truque legal que trabalhadores CLT usam pra comprar sem dar entrada do bolso.",
+    id: "curiosidade",
+    numero: 4,
+    nome: "Curiosidade",
+    emoji: "🔍",
+    objetivo: "Pegar algo do cotidiano da pessoa e apontar como uma 'coisa nova', reivindicando uma nova funcionalidade ou um novo risco.",
+    descricao: "Usa o familiar para criar estranhamento. A pessoa olha para algo que já conhece com outros olhos.",
+    exemplo_original: "Essa fruta que você compra todo mês está 'alimentando' sua diabetes.",
+    exemplo_imovel: "Esse boleto de aluguel que você paga todo mês está financiando o apartamento de outra pessoa — não o seu.",
+    cor: "purple",
+  },
+  {
+    id: "conspiracao",
+    numero: 5,
+    nome: "Conspiração",
+    emoji: "🕵️",
+    objetivo: "Reivindicar um ângulo de conspiração que puxe muito a ideia de 'nós contra eles'.",
+    descricao: "Cria um inimigo (mercado, sistema) e posiciona o prospect do lado dos que sabem a verdade.",
+    exemplo_original: "Esse homem foi assassinado pela indústria farmacêutica por descobrir uma cura natural.",
+    exemplo_imovel: "O que construtoras e corretores nunca contam: o preço de lançamento é o único momento em que o comprador tem poder. Depois disso, quem manda é o mercado.",
+    cor: "red",
+  },
+  {
+    id: "teaser_mecanismo",
+    numero: 6,
+    nome: "Teaser do Mecanismo",
+    emoji: "🔬",
+    objetivo: "Reivindicar o teaser do mecanismo único acompanhado de um benefício muito forte.",
+    descricao: "Apresenta o 'como funciona' de forma parcial — suficiente para despertar curiosidade, insuficiente para satisfazê-la.",
+    exemplo_original: "O 'extrato da abóbora' pode secar até 7kg se usado todos os dias antes de dormir.",
+    exemplo_imovel: "A combinação de FGTS + subsídio do governo pode zerar sua entrada — e a parcela sair menor do que você paga de aluguel hoje.",
     cor: "teal",
   },
   {
-    id: "nova_descoberta",
-    nome: "Nova Descoberta",
-    emoji: "🚀",
-    descricao: "Usa autoridade e credibilidade para criar esperança nova no prospect.",
-    exemplo: "Mensagem urgente: 27 contratos em 2 dias — o maior lançamento da história de Campos.",
+    id: "truque",
+    numero: 7,
+    nome: "Truque",
+    emoji: "🎯",
+    objetivo: "Reivindicar um truque pela facilidade de aplicação e mistério como solução para uma dor comum.",
+    descricao: "A palavra 'truque' carrega leveza e acessibilidade. Parece simples, parece exclusivo — um atalho que poucos conhecem.",
+    exemplo_original: "O 'truque da cevada' queima gordura sem você precisar deixar de tomar aquela gelada.",
+    exemplo_imovel: "O truque legal que trabalhadores CLT usam para comprar apartamento sem tirar um centavo do próprio bolso.",
+    cor: "blue",
+  },
+  {
+    id: "receita_estranha",
+    numero: 8,
+    nome: "Receita Estranha",
+    emoji: "🧪",
+    objetivo: "Usar de uma 'receita estranha' para gerar curiosidade no prospect.",
+    descricao: "O estranhamento é o gatilho. Uma combinação incomum de elementos que juntos geram um resultado surpreendente.",
+    exemplo_original: "Essa 'mistura estranha' tirada do extrato da abóbora ativa seu metabolismo.",
+    exemplo_imovel: "Essa 'combinação estranha' de FGTS + subsídio + financiamento está transformando o salário mínimo na entrada de um apartamento com prainha em Campos.",
     cor: "indigo",
   },
   {
+    id: "nova_descoberta",
+    numero: 9,
+    nome: "Nova Descoberta",
+    emoji: "🚀",
+    objetivo: "Usar de autoridade e credibilidade para reivindicar nova descoberta, gerando atenção e principalmente esperança nova.",
+    descricao: "Anuncia algo como urgente e inédito. Usa dados reais para validar. O prospect sente que chegou na hora certa.",
+    exemplo_original: "Uma mensagem urgente para qualquer pessoa com diabetes tipo 2. Essa descoberta pode salvar sua vida.",
+    exemplo_imovel: "Uma mensagem urgente para quem mora de aluguel em Campos: 27 contratos em 2 dias — o maior lançamento da história da cidade acabou de abrir novas vagas.",
+    cor: "amber",
+  },
+  {
+    id: "historia",
+    numero: 10,
+    nome: "História",
+    emoji: "📖",
+    objetivo: "Seguir uma linha de storytelling com uma afirmação de punch emocional.",
+    descricao: "O protagonista espelha o público. A dor é emocional, não técnica. Cliffhanger prende. Virada inspira. Transição convida.",
+    exemplo_original: "Riram de mim quando falei que pesaria 53kg…",
+    exemplo_imovel: "Riram de mim quando falei que ia sair do aluguel esse ano. Não tinha dinheiro, não tinha fiador, não tinha nada.",
+    cor: "slate",
+  },
+  {
     id: "problema_solucao",
+    numero: 11,
     nome: "Problema / Solução",
     emoji: "🔧",
-    descricao: "Chamada direta do problema + reivindicação de solução clara.",
-    exemplo: "Você paga aluguel todo mês e no final do ano não tem nada seu.",
-    cor: "slate",
+    objetivo: "Fazer uma chamada direta de um problema comum e reivindicar uma solução.",
+    descricao: "O mais direto de todos. Nomeia o problema sem rodeios, amplifica a dor e apresenta a solução como caminho natural.",
+    exemplo_original: "O seu 'amigão' falha na hora H. Tome esse VIAGRA NATURAL.",
+    exemplo_imovel: "Você paga aluguel todo mês e no final do ano não tem nada seu. Existe uma saída — e ela usa dinheiro que já é seu.",
+    cor: "rose",
   },
 ];
 
-// IDs de todos os ângulos — todos ficam disponíveis para todos os funis
-export const TODOS_ANGULOS = [
-  "contrario","historia","curiosidade","conspiracao",
-  "paradoxal","pop_quiz","truque","nova_descoberta","problema_solucao"
+// ─────────────────────────────────────────────────────────────────────────────
+// 7 TIPOS DE CONTEÚDO — separados por grupo
+// ─────────────────────────────────────────────────────────────────────────────
+export const TIPOS = [
+  { id: "copy",             label: "Copy do Site",    icon: "📝", desc: "Texto completo das páginas do funil",          grupo: "Site"       },
+  { id: "vsl",              label: "Script VSL",      icon: "🎬", desc: "Roteiro com tempo, tela e locução",            grupo: "Vídeo"      },
+  { id: "reels",            label: "Reels",           icon: "📱", desc: "Script 30–60s · hook nos primeiros 3s",        grupo: "Social"     },
+  { id: "stories",          label: "Stories",         icon: "◻️", desc: "Sequência de 5 stories com texto e visual",    grupo: "Social"     },
+  { id: "carrossel",        label: "Carrossel",       icon: "🗂️", desc: "Capa + 6 slides + encerramento com CTA",       grupo: "Social"     },
+  { id: "legenda",          label: "Legenda",         icon: "✍️", desc: "3 variações de legenda para feed + hashtags",  grupo: "Social"     },
+  { id: "modelagem",        label: "Modelar Copy",    icon: "✏️", desc: "Melhore uma copy existente · 2 etapas",        grupo: "Ferramenta" },
 ];
 
+// ─────────────────────────────────────────────────────────────────────────────
+// FUNIS BASE
+// ─────────────────────────────────────────────────────────────────────────────
 export const FUNIS_BASE = [
   {
     id: "v1",
@@ -143,7 +208,7 @@ export const FUNIS_BASE = [
     visual: "Verde vibrante, foco em educação financeira",
     tom: "Revelação — como quem está contando um segredo financeiro importante",
     protagonista: "Trabalhador CLT que tem FGTS mas não sabe que pode usar como entrada",
-    angulos_recomendados: ["contrario", "truque", "pop_quiz"],
+    angulos_recomendados: ["contrario", "truque", "teaser_mecanismo", "receita_estranha", "pop_quiz"],
     cor: "blue",
     inicio_recomendado: "contrario",
     instrucao_extra: "FGTS rende 3%, inflação come 4,8%. Calculadora interativa na P1. Passo a passo FGTS→entrada na P2.",
@@ -166,14 +231,11 @@ export const FUNIS_BASE = [
   },
 ];
 
-// Carrega funis do localStorage (inclui os custom) e mescla com os base
 export function getFunis() {
   try {
     const custom = JSON.parse(localStorage.getItem("funis_custom") || "[]");
     return [...FUNIS_BASE, ...custom];
-  } catch {
-    return FUNIS_BASE;
-  }
+  } catch { return FUNIS_BASE; }
 }
 
 export function saveFunilCustom(funil) {
@@ -191,243 +253,315 @@ export function deleteFunilCustom(id) {
   } catch {}
 }
 
-// Alias para compatibilidade — componentes usam FUNIS
 export const FUNIS = FUNIS_BASE;
 
+// ─────────────────────────────────────────────────────────────────────────────
+// VSLs
+// ─────────────────────────────────────────────────────────────────────────────
 export const VSLS = [
   {
-    id: "vsl1",
-    funil_id: "v1",
-    nome: "VSL Funil Geral",
-    duracao: "3–4 min",
-    tom: "Amigo empolgado",
+    id: "vsl1", funil_id: "v1", nome: "VSL Funil Geral", duracao: "3–4 min", tom: "Amigo empolgado",
     estrutura: [
-      { tempo: "0:00–0:20", bloco: "Gancho", descricao: "Frase que para o scroll imediatamente" },
-      { tempo: "0:20–0:45", bloco: "Dor", descricao: "Amplificar o problema do aluguel com emoção" },
+      { tempo: "0:00–0:20", bloco: "Gancho",   descricao: "Frase que para o scroll imediatamente" },
+      { tempo: "0:20–0:45", bloco: "Dor",      descricao: "Amplificar o problema do aluguel com emoção" },
       { tempo: "0:45–1:15", bloco: "Agitação", descricao: "10 anos de aluguel = R$120k perdidos" },
-      { tempo: "1:15–1:45", bloco: "Virada", descricao: '"Existe uma saída que a maioria não conhece"' },
-      { tempo: "1:45–2:30", bloco: "Solução", descricao: "Produto como veículo. FGTS + MCMV" },
-      { tempo: "2:30–3:00", bloco: "Prova", descricao: "Dado real + depoimento (Camila, 31 anos)" },
-      { tempo: "3:00–3:30", bloco: "Oferta", descricao: "O que recebe ao preencher o formulário" },
-      { tempo: "3:30–4:00", bloco: "CTA", descricao: "Chamada clara e urgente" },
+      { tempo: "1:15–1:45", bloco: "Virada",   descricao: "Existe uma saída que a maioria não conhece" },
+      { tempo: "1:45–2:30", bloco: "Solução",  descricao: "Produto como veículo. FGTS + MCMV" },
+      { tempo: "2:30–3:00", bloco: "Prova",    descricao: "27 contratos + depoimento Camila 31 anos" },
+      { tempo: "3:00–3:30", bloco: "Oferta",   descricao: "O que recebe ao preencher o formulário" },
+      { tempo: "3:30–4:00", bloco: "CTA",      descricao: "Chamada clara e urgente" },
     ],
   },
   {
-    id: "vsl2",
-    funil_id: "senior",
-    nome: "VSL Sênior 50+",
-    duracao: "3–5 min",
-    tom: "Pausado e acolhedor",
+    id: "vsl2", funil_id: "senior", nome: "VSL Sênior 50+", duracao: "3–5 min", tom: "Pausado e acolhedor",
     estrutura: [
-      { tempo: "0:00–0:30", bloco: "Gancho", descricao: "Pergunta emocional sobre merecimento" },
-      { tempo: "0:30–1:00", bloco: "História", descricao: "Narrativa de identificação (Seu José, 61 anos)" },
-      { tempo: "1:00–1:30", bloco: "Dor", descricao: 'O peso de nunca ter tido "um canto seu"' },
-      { tempo: "1:30–2:00", bloco: "Virada", descricao: "Ainda dá tempo — mais simples do que parece" },
-      { tempo: "2:00–3:00", bloco: "Solução", descricao: "Produto como segurança, não investimento" },
-      { tempo: "3:00–3:30", bloco: "Prova", descricao: "Dado real + depoimento (mesma faixa etária)" },
-      { tempo: "3:30–4:30", bloco: "Oferta", descricao: "Simulação gratuita, sem compromisso" },
-      { tempo: "4:30–5:00", bloco: "CTA", descricao: "Convite gentil, sem pressão" },
+      { tempo: "0:00–0:30", bloco: "Gancho",   descricao: "Pergunta emocional sobre merecimento" },
+      { tempo: "0:30–1:00", bloco: "História", descricao: "Narrativa Seu José, 61 anos" },
+      { tempo: "1:00–1:30", bloco: "Dor",      descricao: "O peso de nunca ter tido um canto seu" },
+      { tempo: "1:30–2:00", bloco: "Virada",   descricao: "Ainda dá tempo — mais simples do que parece" },
+      { tempo: "2:00–3:00", bloco: "Solução",  descricao: "Produto como segurança, não investimento" },
+      { tempo: "3:00–3:30", bloco: "Prova",    descricao: "Dado real + depoimento mesma faixa etária" },
+      { tempo: "3:30–4:30", bloco: "Oferta",   descricao: "Simulação gratuita, sem compromisso" },
+      { tempo: "4:30–5:00", bloco: "CTA",      descricao: "Convite gentil, sem pressão" },
     ],
   },
   {
-    id: "vsl3",
-    funil_id: "fgts",
-    nome: "VSL FGTS CLT",
-    duracao: "2–3 min",
-    tom: "Revelação de segredo",
+    id: "vsl3", funil_id: "fgts", nome: "VSL FGTS CLT", duracao: "2–3 min", tom: "Revelação de segredo",
     estrutura: [
-      { tempo: "0:00–0:15", bloco: "Gancho", descricao: "Dinheiro parado perdendo valor todo mês" },
-      { tempo: "0:15–0:40", bloco: "Agitação", descricao: "FGTS 3% vs inflação 4,8% — calculado ao vivo" },
-      { tempo: "0:40–1:00", bloco: "Virada", descricao: "Esse dinheiro pode te dar um apartamento agora" },
+      { tempo: "0:00–0:15", bloco: "Gancho",    descricao: "Dinheiro parado perdendo valor todo mês" },
+      { tempo: "0:15–0:40", bloco: "Agitação",  descricao: "FGTS 3% vs inflação 4,8% — calculado ao vivo" },
+      { tempo: "0:40–1:00", bloco: "Virada",    descricao: "Esse dinheiro pode te dar um apartamento agora" },
       { tempo: "1:00–1:30", bloco: "Mecanismo", descricao: "FGTS + subsídio em 4 passos simples" },
-      { tempo: "1:30–2:00", bloco: "Produto", descricao: "Parque Ilha Bela como destino desse dinheiro" },
-      { tempo: "2:00–2:30", bloco: "Prova", descricao: "Dado real + simulação numérica ilustrativa" },
-      { tempo: "2:30–3:00", bloco: "CTA", descricao: "Simulação gratuita do FGTS disponível" },
+      { tempo: "1:30–2:00", bloco: "Produto",   descricao: "Parque Ilha Bela como destino desse dinheiro" },
+      { tempo: "2:00–2:30", bloco: "Prova",     descricao: "Dado real + simulação numérica ilustrativa" },
+      { tempo: "2:30–3:00", bloco: "CTA",       descricao: "Simulação gratuita do FGTS disponível" },
     ],
   },
   {
-    id: "vsl4",
-    funil_id: "urgencia",
-    nome: "VSL Urgência",
-    duracao: "2 min",
-    tom: "Breaking news",
+    id: "vsl4", funil_id: "urgencia", nome: "VSL Urgência", duracao: "2 min", tom: "Breaking news",
     estrutura: [
-      { tempo: "0:00–0:10", bloco: "Gancho", descricao: "Mora em Campos e não fez isso? Está perdendo agora." },
+      { tempo: "0:00–0:10", bloco: "Gancho",        descricao: "Mora em Campos e não fez isso? Está perdendo agora." },
       { tempo: "0:10–0:30", bloco: "Dado chocante", descricao: "27 contratos em 2 dias — maior lançamento de Campos" },
-      { tempo: "0:30–0:50", bloco: "Em jogo", descricao: "Preço sobe, vagas acabam, condições somem" },
-      { tempo: "0:50–1:20", bloco: "Produto", descricao: "Apresentação rápida com imagens reais" },
-      { tempo: "1:20–1:40", bloco: "Prova social", descricao: "Dado + depoimento curto" },
-      { tempo: "1:40–2:00", bloco: "CTA", descricao: "Chamada direta e urgente para o formulário" },
+      { tempo: "0:30–0:50", bloco: "Em jogo",       descricao: "Preço sobe, vagas acabam, condições somem" },
+      { tempo: "0:50–1:20", bloco: "Produto",       descricao: "Apresentação rápida com imagens reais" },
+      { tempo: "1:20–1:40", bloco: "Prova social",  descricao: "Dado + depoimento curto" },
+      { tempo: "1:40–2:00", bloco: "CTA",           descricao: "Chamada direta e urgente para o formulário" },
     ],
   },
 ];
 
-// Gera o prompt completo combinando funil + ângulo
+// ─────────────────────────────────────────────────────────────────────────────
+// GERADOR DE PROMPT
+// ─────────────────────────────────────────────────────────────────────────────
 export function gerarPrompt({ funil, angulo, tipo = "copy", extras = "" }) {
   const ctx = PRODUTO.contexto_base;
 
   const instrucoes_angulo = {
-    contrario: `Use o ângulo CONTRÁRIO. Quebre a crença mais forte que esse público tem.
-O objetivo é gerar curiosidade ao contradizer o senso comum.
-Exemplo de estrutura: headline que nega o óbvio → revelação da contradição → solução.`,
+    contrario: `ÂNGULO ${angulo.numero}: CONTRÁRIO
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Quebre a crença mais forte desse público (${funil.subtitulo}).
+A headline deve negar algo óbvio que eles acreditam. A revelação contradiz o senso comum com dado real.
+Estrutura: headline que nega o óbvio → revelação da contradição → solução.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    historia: `Use o ângulo HISTÓRIA com punch emocional.
-Protagonista: ${funil.protagonista}.
-Estrutura obrigatória: cena de dor no cotidiano → desenvolvimento emocional (não financeiro) → cliffhanger → virada → epílogo de conquista → transição para o leitor ("e você?").`,
+    paradoxal: `ÂNGULO ${angulo.numero}: IDEIA PARADOXAL
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Pegue a lógica que o público (${funil.subtitulo}) já usa e vire contra ela.
+O hook cria uma contradição que prende a atenção imediatamente.
+Estrutura: paradoxo no hook → explicação (FGTS + subsídio = zero do bolso) → validação com dado real → ação.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    curiosidade: `Use o ângulo CURIOSIDADE.
-Parta de um dado real ou fato do cotidiano de Campos dos Goytacazes que aponte para a oportunidade.
-Gancho sugerido: "1 a cada 30 moradores de Campos já mora em condomínio fechado com lazer — e provavelmente paga menos que você de aluguel hoje."
-Desenvolvimento: gere curiosidade → não revele ainda → construa suspense → revele na próxima página.`,
+    pop_quiz: `ÂNGULO ${angulo.numero}: POP QUIZ
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Crie um quiz estilo show do milhão para o público (${funil.subtitulo}).
+A resposta correta quebra uma crença comum — use o ângulo contrário na revelação.
+Estrutura obrigatória:
+1. Contexto de por que essa pergunta importa
+2. A pergunta com 4 alternativas (A, B, C, D)
+3. Instrução para escolher antes de revelar
+4. Revelação da resposta com impacto emocional
+5. Por que essa resposta importa para o leitor
+6. Transição para a solução
+7. CTA
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    conspiracao: `Use o ângulo CONSPIRAÇÃO adaptado ao mercado imobiliário (sem teorias absurdas — baseado em fatos reais).
-Conspiração: "O preço de lançamento é o ÚNICO momento em que o comprador tem poder de negociação. Depois disso, quem manda é o mercado."
-Estrutura: revele o segredo → dados que confirmam → "nós (compradores inteligentes) vs eles (mercado)" → CTA urgente.`,
+    curiosidade: `ÂNGULO ${angulo.numero}: CURIOSIDADE
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Pegue algo do cotidiano do público (${funil.subtitulo}) e reapresente como ameaça ou oportunidade nova.
+O gancho deve ser familiar o suficiente para reconhecerem, surpreendente o suficiente para parar o scroll.
+Estrutura: elemento familiar no gancho → revelação do novo risco ou oportunidade → suspense → solução na próxima página.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    paradoxal: `Use o ângulo IDEIA PARADOXAL.
-Paradoxo central: "Pessoas sem dinheiro guardado estão comprando apartamento. Quem tem dinheiro está perdendo a oportunidade."
-Explique o paradoxo (FGTS + subsídio + parcelamento = zero do bolso) → valide com dado real → resolva com ação.`,
+    conspiracao: `ÂNGULO ${angulo.numero}: CONSPIRAÇÃO
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Crie um "nós contra eles" baseado em fatos reais do mercado imobiliário — sem teorias absurdas.
+O inimigo é o sistema (mercado, inflação, timing). O prospect está do lado dos que sabem agir.
+Estrutura: revelação do segredo → dados que confirmam → "quem sabe age primeiro" → CTA urgente.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    pop_quiz: `Use o ângulo POP QUIZ (estilo show do milhão).
-Pergunta: "Qual dessas opções rende MENOS dinheiro para você todo mês?"
-A) Deixar na poupança | B) Investir no Tesouro Direto | C) Deixar parado no FGTS | D) Aplicar em renda variável
-A resposta correta é C — explore isso para revelar a perda e conduzir para a solução.
-Desenvolva: introdução da pergunta → 4 alternativas com descrições → revelação com impacto → transição para o produto → CTA.`,
+    teaser_mecanismo: `ÂNGULO ${angulo.numero}: TEASER DO MECANISMO
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Apresente o mecanismo único (FGTS + subsídio + financiamento MCMV) de forma parcial.
+Suficiente para despertar curiosidade, insuficiente para satisfazê-la completamente.
+O benefício final deve ser concreto e forte.
+Estrutura: benefício forte no hook → introdução do mecanismo com nome específico → revelação parcial → promessa de explicação completa → CTA.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    truque: `Use o ângulo TRUQUE (facilidade de aplicação + mistério).
-O "truque": usar o FGTS como entrada sem tirar nada do próprio bolso, combinado com o subsídio do governo.
-Parece complicado mas é simples — essa sensação deve guiar o copy.
-Headline sugerida: "O truque legal que trabalhadores CLT usam para comprar apartamento sem dar entrada do próprio bolso."`,
+    truque: `ÂNGULO ${angulo.numero}: TRUQUE
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Apresente a solução como um "truque" — fácil de aplicar, com toque de mistério, que resolve uma dor real do público (${funil.subtitulo}).
+Parece simples, parece exclusivo, como se a pessoa descobrisse um atalho que poucos conhecem.
+Estrutura: headline com "truque" + dor resolvida → mistério do como → revelação em passos simples → prova → CTA.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    nova_descoberta: `Use o ângulo NOVA DESCOBERTA.
-Âncora de autoridade: "27 contratos e R$5,6 milhões em 2 dias — o maior lançamento da história de Campos dos Goytacazes."
-Estrutura: anuncie como descoberta urgente → por que esse dado importa para o leitor → o que ele perde se não agir → CTA agressivo mas honesto.`,
+    receita_estranha: `ÂNGULO ${angulo.numero}: RECEITA ESTRANHA
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Apresente a combinação FGTS + subsídio + financiamento como uma "receita estranha" — mistura incomum que gera resultado surpreendente.
+O estranhamento é o gatilho. A combinação deve soar quase improvável até ser explicada.
+Estrutura: headline com a "receita" + resultado surpreendente → os "ingredientes" → como a combinação funciona → resultado concreto → CTA.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
 
-    problema_solucao: `Use o ângulo PROBLEMA/SOLUÇÃO.
-Problema central: "Você paga aluguel todo mês e no final do ano não tem nada seu."
+    nova_descoberta: `ÂNGULO ${angulo.numero}: NOVA DESCOBERTA
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Anuncie como urgente e recente usando o dado real de prova social como âncora de autoridade.
+O prospect deve sentir que chegou na hora certa — essa descoberta é para ele agora.
+Estrutura: anúncio urgente com dado real (27 contratos, R$5,6mi em 2 dias) → por que esse dado importa para esse público → o que perde se não agir → CTA.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
+
+    historia: `ÂNGULO ${angulo.numero}: HISTÓRIA
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Storytelling com punch emocional. Protagonista: ${funil.protagonista}.
+A dor deve ser emocional (vergonha, cansaço, insegurança) — não técnica.
+Estrutura obrigatória:
+1. Cena de abertura: momento específico de dor no cotidiano
+2. Desenvolvimento emocional (não financeiro)
+3. Cliffhanger que interrompe a narrativa
+4. Virada: a descoberta que mudou tudo
+5. Epílogo: o depois (concreto, visual, emocional)
+6. Transição para o leitor: "e você?"
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
+
+    problema_solucao: `ÂNGULO ${angulo.numero}: PROBLEMA / SOLUÇÃO
+OBJETIVO: ${angulo.objetivo}
+COMO USAR: Nomeie o problema direto, sem rodeios. Amplifique com dado real. Apresente a solução como caminho natural.
+O produto é o veículo, não o herói. O herói é o cliente tomando a decisão.
 Dado para amplificar: um brasileiro gasta em média R$120.000 em aluguel ao longo de 10 anos sem construir patrimônio.
-Estrutura: amplifique o problema com emoção → promessa de saída → solução (produto como veículo, não como herói) → consolide com prova social.`,
+Estrutura: headline com o problema central → amplificação com dado → promessa de saída → solução → prova social → CTA.
+Exemplo adaptado: "${angulo.exemplo_imovel}"`,
   };
 
   const instrucoes_tipo = {
-    copy: `Escreva o copy completo para as páginas do funil.
+    copy: `TIPO: COPY DO SITE
 Páginas: ${funil.paginas.join(" | ")}
 
-Para cada página entregue:
-- [HEADLINE] — headline principal
-- [SUBHEADLINE] — complemento da headline  
-- [BULLETS] — 3 bullets de dor ou benefício
-- [CORPO] — texto principal da seção
-- [CTA] — chamada para ação com texto do botão
-- [FAQ] — na última página: 5 perguntas e respostas reais
+Para cada página entregue nessa estrutura exata:
+[HEADLINE] — máx 12 palavras, direto ao ponto
+[SUBHEADLINE] — 1–2 linhas complementando a headline
+[BULLETS] — 3 bullets de dor ou benefício (máx 15 palavras cada)
+[CORPO] — texto principal em parágrafos curtos, linguagem oral
+[CTA] — texto do botão de ação
+[FAQ] — SOMENTE na última página: 5 perguntas reais com respostas diretas
 
-Formato: copy pronto para colar diretamente nas páginas, indicando onde cada texto vai.`,
+Indique sempre de qual página é cada bloco. Copy pronto para colar diretamente nas páginas.`,
 
-    vsl: `Escreva o script completo de VSL (${funil.id === "urgencia" ? "2 min" : funil.id === "fgts" ? "2–3 min" : funil.id === "senior" ? "3–5 min" : "3–4 min"}).
-Tom: ${funil.tom}.
-
-Para cada bloco do script entregue:
-- [TEMPO] — ex: 0:00–0:20
-- [TELA] — o que aparece visualmente (texto na tela, imagem, b-roll)
-- [LOCUÇÃO] — o que o locutor fala
-- [B-ROLL] — sugestão de imagem ou vídeo de fundo
-
-Inclua sugestões de imagens para cada bloco. Script pronto para teleprompter e locução.`,
-
-    social: `Escreva roteiros de conteúdo para redes sociais.
-Entregue:
-1. REELS (30–60s): script completo com hook nos primeiros 3s, desenvolvimento e CTA
-2. STORIES (sequência de 5): texto de cada story + sugestão visual
-3. CARROSSEL: título + 6 slides com texto de cada slide + legenda
-4. LEGENDA: texto completo para feed com hashtags
-
+    vsl: `TIPO: SCRIPT VSL
+Duração: ${funil.id === "urgencia" ? "2 minutos" : funil.id === "fgts" ? "2–3 minutos" : funil.id === "senior" ? "3–5 minutos" : "3–4 minutos"}
 Tom: ${funil.tom}
-Formato: roteiros prontos para gravar ou adaptar.`,
 
-    modelagem: `Vou te enviar uma copy existente para você modelar e melhorar.
+Para cada bloco entregue:
+[TEMPO] — ex: 0:00–0:20
+[TELA] — o que aparece visualmente (texto sobreposto, imagem, animação)
+[LOCUÇÃO] — exatamente o que o locutor fala (escrito para ser falado)
+[B-ROLL] — sugestão de imagem ou vídeo de fundo
 
-ETAPA 1 — MODELAGEM:
+Ao final entregue também:
+[THUMBNAIL] — sugestão de imagem de capa
+[LEGENDA CURTA] — 1 linha para descrição do vídeo
+
+Script pronto para teleprompter e locução direta.`,
+
+    reels: `TIPO: SCRIPT DE REELS (30–60 segundos)
+Tom: ${funil.tom}
+Público: ${funil.subtitulo}
+
+Entregue o script completo:
+[HOOK 0–3s] — frase ou ação que segura o scroll nos primeiros 3 segundos (visual + verbal)
+[DESENVOLVIMENTO 3–45s] — blocos curtos de 5–8 segundos cada
+[CTA FINAL] — chamada para ação nos últimos 5 segundos
+[TEXTO NA TELA] — lista de todos os textos sobrepostos ao vídeo
+[LEGENDA] — texto completo para a legenda do post com hashtags
+[SUGESTÃO DE TRILHA] — estilo de música ou som sugerido
+
+Cada linha deve corresponder a uma fala ou ação de câmera.`,
+
+    stories: `TIPO: SEQUÊNCIA DE STORIES (5 stories)
+Tom: ${funil.tom}
+Público: ${funil.subtitulo}
+
+Para cada story:
+[STORY X de 5]
+[VISUAL] — o que aparece na tela (foto, vídeo, cor de fundo, sticker sugerido)
+[TEXTO PRINCIPAL] — texto sobreposto (máx 3 linhas)
+[ELEMENTO INTERATIVO] — enquete, caixa de pergunta, contagem regressiva, link (quando aplicável)
+[TRANSIÇÃO] — como conecta com o próximo story
+
+O story 5 deve ter CTA claro para formulário ou WhatsApp.
+Progressão obrigatória: gancho → desenvolvimento → revelação → prova → ação.`,
+
+    carrossel: `TIPO: CARROSSEL (capa + 6 slides + encerramento)
+Tom: ${funil.tom}
+Público: ${funil.subtitulo}
+
+Para cada slide:
+[CAPA] — título principal que para o scroll + subtítulo
+[SLIDE 1 ao 6] — título do slide + texto (máx 4 linhas) + sugestão visual (cor, ícone, imagem)
+[ENCERRAMENTO] — CTA + texto do botão + o que a pessoa deve fazer agora
+
+Entregue também a legenda completa do post com hashtags.`,
+
+    legenda: `TIPO: LEGENDA PARA FEED
+Tom: ${funil.tom}
+Público: ${funil.subtitulo}
+
+Entregue 3 variações:
+
+[VARIAÇÃO 1 — CURTA]
+Até 3 linhas + hashtags. Primeira linha como hook (antes do "ver mais").
+
+[VARIAÇÃO 2 — MÉDIA]
+5–10 linhas + hashtags. Emojis estratégicos. CTA no final.
+
+[VARIAÇÃO 3 — LONGA]
+15–25 linhas em storytelling + hashtags. Hook forte na primeira linha. CTA para WhatsApp ou link na bio.
+
+Para todas as variações: 10–15 hashtags (mix de volume alto, médio e específico de Campos/imóvel).`,
+
+    modelagem: `TIPO: MODELAGEM E REVISÃO DE COPY
+Público alvo da copy: ${funil.subtitulo}
+Tom desejado: ${funil.tom}
+
+ETAPA 1 — MODELAGEM (envie a copy e peça isso primeiro):
 1. Preserve a essência e mensagem original
-2. Reformule frases para ser único (sem plágio)
+2. Reformule frases para garantir originalidade
 3. Use linguagem clara e acessível para locução
-4. Melhore a fluidez e ritmo
-5. Adicione gatilhos emocionais: medos, desejos, aspirações do público
-6. Adapte referências para a cultura de Campos dos Goytacazes
+4. Melhore fluidez e ritmo entre parágrafos
+5. Adicione gatilhos emocionais do público (${funil.subtitulo}): medos, desejos, aspirações
+6. Adapte referências para a realidade de Campos dos Goytacazes
 7. Aplique: Open Loops, Prova Social, Benefícios Transformadores
 
-ETAPA 2 — REVISÃO (após modelagem aprovada):
+ETAPA 2 — REVISÃO (somente após modelagem aprovada):
 1. Correção ortográfica e gramatical
-2. Pontuação para ritmo fluido
+2. Pontuação para ritmo fluido de leitura e locução
 3. Fluidez e coerência entre parágrafos
-4. Clareza e simplicidade
-5. Consistência de tom para o público ${funil.subtitulo}
-6. Eliminar redundâncias
-7. Verificar fatos e dados
+4. Clareza — elimine jargões desnecessários
+5. Consistência de tom para o público (${funil.subtitulo})
+6. Eliminação de redundâncias
+7. Verificação de fatos e dados
 
 Para cada alteração explique: O que mudou | Por que mudou | Como melhora a copy.
-Entrega final: copy pronto para locução e conversão.`,
+Entrega final: copy revisada, pronta para locução e conversão.`,
   };
 
-  const prompt = `${ctx}
+  return `${ctx}
 
----
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-FUNIL: ${funil.nome} (${funil.slug})
+FUNIL: ${funil.nome}
+ID: ${funil.slug}
 PÚBLICO: ${funil.subtitulo}
 VISUAL: ${funil.visual}
-TOM: ${funil.tom}
-${funil.instrucao_extra ? `CONTEXTO ADICIONAL: ${funil.instrucao_extra}` : ""}
+TOM: ${funil.tom}${funil.instrucao_extra ? `\nCONTEXTO: ${funil.instrucao_extra}` : ""}
 
----
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-ÂNGULO A USAR:
-${instrucoes_angulo[angulo.id]}
+${instrucoes_angulo[angulo.id] || `ÂNGULO: ${angulo.nome}\nOBJETIVO: ${angulo.objetivo}`}
 
----
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-TIPO DE ENTREGA:
-${instrucoes_tipo[tipo]}
-
-${extras ? `---\nOBSERVAÇÕES ADICIONAIS:\n${extras}` : ""}`;
-
-  return prompt;
+${instrucoes_tipo[tipo] || `TIPO: ${tipo}`}
+${extras ? `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nOBSERVAÇÕES ADICIONAIS:\n${extras}` : ""}`;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// MÉTRICAS E TESTES
+// ─────────────────────────────────────────────────────────────────────────────
 export const METRICAS_INFO = {
-  hook: {
-    nome: "Hook Rate",
-    formula: "Visualizações 3s ÷ Reproduções totais",
-    descricao: "Mede o poder do seu clickbait/gancho",
-    meta: "> 50%",
-    cor: "blue",
-  },
-  retencao: {
-    nome: "Retenção Body",
-    formula: "Reprodução 75% ÷ Reproduções totais",
-    descricao: "Mede o quanto o corpo do anúncio está convertendo",
-    meta: "> 25%",
-    cor: "green",
-  },
-  conversao: {
-    nome: "Conversão Body",
-    formula: "Compras ÷ Reprodução 75%",
-    descricao: "Taxa de conversão do corpo para compra",
-    meta: "> 3%",
-    cor: "purple",
-  },
+  hook:      { nome: "Hook Rate",        formula: "Visualizações 3s ÷ Reproduções totais", descricao: "Mede o poder do seu clickbait/gancho",             meta: "> 50%", cor: "blue"   },
+  retencao:  { nome: "Retenção Body",    formula: "Reprodução 75% ÷ Reproduções totais",   descricao: "Quanto o corpo do anúncio está retendo",           meta: "> 25%", cor: "green"  },
+  conversao: { nome: "Conversão Body",   formula: "Compras ÷ Reprodução 75%",              descricao: "Taxa de conversão do corpo para compra",           meta: "> 3%",  cor: "purple" },
 };
 
 export const TIPOS_TESTE = {
   horizontal: {
     nome: "Teste Horizontal",
-    uso: "Ads validados — para lateralização e escala",
+    uso: "Ads validados — lateralização e escala",
     elementos: ["Clickbait", "Hook (primeiros segundos)", "Hypnotic Visual", "Banner Copy", "Headline", "Thumbnail", "Dimensões"],
     descricao: "Valide um ad → teste variações dos primeiros segundos. Gaste mais nos vencedores.",
   },
   vertical: {
     nome: "Teste Vertical",
-    uso: "Criativos perdendo performance — aumentar tempo de vida útil",
+    uso: "Criativos perdendo performance — aumentar vida útil",
     elementos: ["Interlocutor/ator", "CTA", "Prova social/depoimento", "Autoridade", "Video react flutuante", "Música/som", "Teste visual (cenário, takes)", "Narração", "Duração", "Dimensão"],
-    descricao: "Criativo antigo saturando → teste elementos internos para renovar sem criar do zero.",
+    descricao: "Criativo saturando → teste elementos internos para renovar sem criar do zero.",
   },
 };
