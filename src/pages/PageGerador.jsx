@@ -1,32 +1,30 @@
 import { useState, useRef } from "react";
-import { FUNIS, ANGULOS, VSLS, gerarPrompt } from "../data";
+import { ANGULOS, gerarPrompt } from "../data";
 
 const COR_MAP = {
-  green: "#22c55e",
-  amber: "#f59e0b",
-  blue: "#3b82f6",
-  red: "#ef4444",
+  green: "#22c55e", amber: "#f59e0b", blue: "#3b82f6", red: "#ef4444",
+  purple: "#a855f7", teal: "#14b8a6", orange: "#f97316", indigo: "#6366f1", slate: "#94a3b8",
 };
 
 const TIPOS = [
-  { id: "copy", label: "Copy do Site", desc: "Texto completo das páginas do funil", icon: "📝" },
-  { id: "vsl", label: "Script VSL", desc: "Roteiro de vídeo com tempo, tela e locução", icon: "🎬" },
-  { id: "social", label: "Redes Sociais", desc: "Reels, Stories, Carrossel e legenda", icon: "📱" },
-  { id: "modelagem", label: "Modelar Copy", desc: "Melhore uma copy existente com IA", icon: "✏️" },
+  { id: "copy",      label: "Copy do Site",   desc: "Texto completo das páginas",         icon: "📝" },
+  { id: "vsl",       label: "Script VSL",     desc: "Roteiro com tempo, tela e locução",  icon: "🎬" },
+  { id: "social",    label: "Redes Sociais",  desc: "Reels, Stories, Carrossel, legenda", icon: "📱" },
+  { id: "modelagem", label: "Modelar Copy",   desc: "Melhore uma copy existente com IA",  icon: "✏️" },
 ];
 
-export default function PageGerador() {
+export default function PageGerador({ funis = [] }) {
   const [funilId, setFunilId] = useState("");
   const [anguloId, setAnguloId] = useState("");
   const [tipo, setTipo] = useState("copy");
   const [extras, setExtras] = useState("");
   const [copiado, setCopiado] = useState(false);
+  const [savedOk, setSavedOk] = useState(false);
   const [copyExistente, setCopyExistente] = useState("");
   const promptRef = useRef(null);
 
-  const funil = FUNIS.find((f) => f.id === funilId);
+  const funil = funis.find((f) => f.id === funilId);
   const angulo = ANGULOS.find((a) => a.id === anguloId);
-  const vslInfo = VSLS.find((v) => v.funil_id === funilId);
 
   const promptGerado = funil && angulo
     ? gerarPrompt({
@@ -47,23 +45,30 @@ export default function PageGerador() {
     });
   }
 
-  function salvar() {
-    if (!promptGerado || !funil || !angulo) return;
-    const salvos = JSON.parse(localStorage.getItem("roteiros") || "[]");
-    salvos.push({
+  function salvarKanban() {
+    if (!funil || !angulo) return;
+    const cards = JSON.parse(localStorage.getItem("kanban_cards") || "[]");
+    cards.unshift({
       id: Date.now(),
-      funil: funil.nome,
-      angulo: angulo.nome,
+      titulo: `${funil.nome} · ${angulo.nome} · ${TIPOS.find(t=>t.id===tipo)?.label}`,
+      funil_id: funil.id,
+      funil_nome: funil.nome,
+      funil_cor: funil.cor,
+      angulo_id: angulo.id,
+      angulo_nome: angulo.nome,
+      angulo_emoji: angulo.emoji,
       tipo,
-      prompt: promptGerado,
-      data: new Date().toLocaleDateString("pt-BR"),
+      hook: "", roas: "", notas: promptGerado ? "(prompt gerado)" : "",
+      coluna: "a_testar",
+      criado: new Date().toLocaleDateString("pt-BR"),
     });
-    localStorage.setItem("roteiros", JSON.stringify(salvos));
-    alert("Salvo em Roteiros!");
+    localStorage.setItem("kanban_cards", JSON.stringify(cards));
+    setSavedOk(true);
+    setTimeout(() => setSavedOk(false), 2500);
   }
 
   const podeGerar = funilId && anguloId;
-  const angulosDisponiveis = funil ? ANGULOS.filter((a) => funil.angulos_recomendados.includes(a.id)) : ANGULOS;
+  // Todos os ângulos disponíveis — sem restrição por funil
 
   return (
     <div style={{ padding: 32, maxWidth: 1100, margin: "0 auto" }}>
@@ -85,25 +90,20 @@ export default function PageGerador() {
               1 · Qual funil?
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              {FUNIS.map((f) => {
-                const cor = COR_MAP[f.cor];
+              {funis.map((f) => {
+                const cor = COR_MAP[f.cor] || "#22c55e";
                 const sel = funilId === f.id;
                 return (
                   <button
                     key={f.id}
                     onClick={() => { setFunilId(f.id); setAnguloId(""); }}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "10px 12px",
-                      borderRadius: 8,
+                      display: "flex", alignItems: "center", gap: 10,
+                      padding: "10px 12px", borderRadius: 8,
                       border: sel ? `1px solid ${cor}55` : "1px solid #1a1a1a",
                       background: sel ? cor + "15" : "#0d0d0d",
                       color: sel ? "#fff" : "#666",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      transition: "all 0.15s",
+                      cursor: "pointer", textAlign: "left",
                     }}
                   >
                     <span style={{ width: 8, height: 8, borderRadius: "50%", background: cor, flexShrink: 0 }} />
@@ -111,18 +111,13 @@ export default function PageGerador() {
                       <div style={{ fontSize: 12, fontWeight: 600 }}>{f.nome}</div>
                       <div style={{ fontSize: 10, color: sel ? cor + "aa" : "#444" }}>{f.subtitulo}</div>
                     </div>
-                    {f.id === f.id && funil?.inicio_recomendado && sel && (
-                      <span style={{ marginLeft: "auto", fontSize: 9, color: cor, background: cor + "22", padding: "1px 6px", borderRadius: 4 }}>
-                        ativo
-                      </span>
-                    )}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* PASSO 2: Ângulo */}
+          {/* PASSO 2: Ângulo — todos disponíveis */}
           <div style={{ background: "#111", border: "1px solid #1e1e1e", borderRadius: 12, padding: 18 }}>
             <div style={{ fontSize: 11, fontWeight: 600, color: "#555", marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>
               2 · Qual ângulo?
@@ -134,15 +129,16 @@ export default function PageGerador() {
               <>
                 {funil?.inicio_recomendado && (
                   <div style={{ fontSize: 10, color: "#555", marginBottom: 8 }}>
-                    💡 Recomendado para começar: <strong style={{ color: "#888" }}>
+                    💡 Começar por: <strong style={{ color: "#888" }}>
                       {ANGULOS.find(a => a.id === funil.inicio_recomendado)?.nome}
                     </strong>
                   </div>
                 )}
                 <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-                  {angulosDisponiveis.map((a) => {
+                  {ANGULOS.map((a) => {
                     const sel = anguloId === a.id;
-                    const recomendado = a.id === funil?.inicio_recomendado;
+                    const recomendado = (funil?.angulos_recomendados || []).includes(a.id);
+                    const inicio = a.id === funil?.inicio_recomendado;
                     return (
                       <button
                         key={a.id}
@@ -165,10 +161,11 @@ export default function PageGerador() {
                           <div style={{ fontSize: 12, fontWeight: 600 }}>{a.nome}</div>
                           <div style={{ fontSize: 10, color: sel ? "#22c55e88" : "#333", lineHeight: 1.4 }}>{a.descricao}</div>
                         </div>
-                        {recomendado && (
-                          <span style={{ fontSize: 9, color: "#22c55e", background: "#22c55e22", padding: "1px 5px", borderRadius: 4, flexShrink: 0 }}>
-                            ★
-                          </span>
+                        {inicio && (
+                          <span style={{ fontSize: 9, color: "#fff", background: "#22c55e", padding: "1px 5px", borderRadius: 4, flexShrink: 0 }}>★ início</span>
+                        )}
+                        {recomendado && !inicio && (
+                          <span style={{ fontSize: 9, color: "#22c55e", background: "#22c55e22", padding: "1px 5px", borderRadius: 4, flexShrink: 0 }}>rec.</span>
                         )}
                       </button>
                     );
@@ -296,50 +293,27 @@ export default function PageGerador() {
                 <div style={{ fontSize: 10, color: "#555" }}>Tipo</div>
                 <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{TIPOS.find(t => t.id === tipo)?.label}</div>
               </div>
-              {vslInfo && tipo === "vsl" && (
-                <>
-                  <div style={{ color: "#222" }}>·</div>
-                  <div>
-                    <div style={{ fontSize: 10, color: "#555" }}>Duração</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: "#22c55e" }}>{vslInfo.duracao}</div>
-                  </div>
-                </>
-              )}
             </div>
           )}
 
           {/* Prompt */}
-          <div style={{
-            background: "#111",
-            border: "1px solid #1e1e1e",
-            borderRadius: 12,
-            overflow: "hidden",
-          }}>
-            <div style={{
-              padding: "12px 18px",
-              borderBottom: "1px solid #1a1a1a",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}>
+          <div style={{ background: "#111", border: "1px solid #1e1e1e", borderRadius: 12, overflow: "hidden" }}>
+            <div style={{ padding: "12px 18px", borderBottom: "1px solid #1a1a1a", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ fontSize: 12, fontWeight: 600, color: "#888" }}>
-                {promptGerado ? "✓ Prompt gerado — cole no ChatGPT" : "Selecione funil + ângulo para gerar"}
+                {promptGerado ? "✓ Prompt pronto — cole no ChatGPT" : "Selecione funil + ângulo para gerar"}
               </div>
               {promptGerado && (
                 <div style={{ display: "flex", gap: 8 }}>
                   <button
-                    onClick={salvar}
+                    onClick={salvarKanban}
                     style={{
-                      fontSize: 11,
-                      padding: "6px 12px",
-                      borderRadius: 6,
-                      border: "1px solid #222",
-                      background: "#1a1a1a",
-                      color: "#888",
-                      cursor: "pointer",
+                      fontSize: 11, padding: "6px 12px", borderRadius: 6,
+                      border: savedOk ? "1px solid #6366f155" : "1px solid #222",
+                      background: savedOk ? "#6366f122" : "#1a1a1a",
+                      color: savedOk ? "#6366f1" : "#888", cursor: "pointer",
                     }}
                   >
-                    💾 Salvar
+                    {savedOk ? "✓ No Kanban!" : "▤ Salvar no Kanban"}
                   </button>
                   <button
                     onClick={copiar}

@@ -97,7 +97,13 @@ export const ANGULOS = [
   },
 ];
 
-export const FUNIS = [
+// IDs de todos os ângulos — todos ficam disponíveis para todos os funis
+export const TODOS_ANGULOS = [
+  "contrario","historia","curiosidade","conspiracao",
+  "paradoxal","pop_quiz","truque","nova_descoberta","problema_solucao"
+];
+
+export const FUNIS_BASE = [
   {
     id: "v1",
     nome: "Funil Geral",
@@ -107,10 +113,11 @@ export const FUNIS = [
     visual: "Escuro/verde, energético",
     tom: "Direto, animado — como um amigo empolgado contando uma oportunidade",
     protagonista: "Camila, 32 anos, moradora de Campos, 8 anos pagando aluguel",
-    angulos_recomendados: ["historia", "contrario", "curiosidade", "problema_solucao", "nova_descoberta"],
+    angulos_recomendados: ["historia", "contrario", "nova_descoberta"],
     cor: "green",
     inicio_recomendado: "historia",
     instrucao_extra: "3 páginas gamificadas. Foco em FGTS como entrada + subsídio MCMV.",
+    custom: false,
   },
   {
     id: "senior",
@@ -125,6 +132,7 @@ export const FUNIS = [
     cor: "amber",
     inicio_recomendado: "problema_solucao",
     instrucao_extra: "Seções: segurança, conforto, localização, financiamento, FAQ. Slideshow automático de fotos reais.",
+    custom: false,
   },
   {
     id: "fgts",
@@ -139,6 +147,7 @@ export const FUNIS = [
     cor: "blue",
     inicio_recomendado: "contrario",
     instrucao_extra: "FGTS rende 3%, inflação come 4,8%. Calculadora interativa na P1. Passo a passo FGTS→entrada na P2.",
+    custom: false,
   },
   {
     id: "urgencia",
@@ -153,8 +162,37 @@ export const FUNIS = [
     cor: "red",
     inicio_recomendado: "conspiracao",
     instrucao_extra: "Dados reais: 27 contratos + R$5,6mi em 2 dias. Preço sobe com andamento da obra.",
+    custom: false,
   },
 ];
+
+// Carrega funis do localStorage (inclui os custom) e mescla com os base
+export function getFunis() {
+  try {
+    const custom = JSON.parse(localStorage.getItem("funis_custom") || "[]");
+    return [...FUNIS_BASE, ...custom];
+  } catch {
+    return FUNIS_BASE;
+  }
+}
+
+export function saveFunilCustom(funil) {
+  try {
+    const custom = JSON.parse(localStorage.getItem("funis_custom") || "[]");
+    custom.push({ ...funil, custom: true });
+    localStorage.setItem("funis_custom", JSON.stringify(custom));
+  } catch {}
+}
+
+export function deleteFunilCustom(id) {
+  try {
+    const custom = JSON.parse(localStorage.getItem("funis_custom") || "[]");
+    localStorage.setItem("funis_custom", JSON.stringify(custom.filter(f => f.id !== id)));
+  } catch {}
+}
+
+// Alias para compatibilidade — componentes usam FUNIS
+export const FUNIS = FUNIS_BASE;
 
 export const VSLS = [
   {
