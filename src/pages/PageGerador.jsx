@@ -44,16 +44,39 @@ export default function PageGerador({ funis = [] }) {
     });
   }
 
+  async function gerarTituloIA(prompt) {
+    try {
+      const r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 60,
+          messages: [{
+            role: "user",
+            content: `Crie um título curto e descritivo (máx 6 palavras) para identificar este criativo de marketing imobiliário. Responda APENAS o título, sem aspas, sem pontuação final.\n\nContexto do criativo:\n${prompt.slice(0, 400)}`,
+          }],
+        }),
+      });
+      const data = await r.json();
+      return data?.content?.[0]?.text?.trim() || null;
+    } catch { return null; }
+  }
+
   async function salvarKanban() {
     if (!funil || !angulo || saving) return;
     const tipoObj = TIPOS.find(t => t.id === tipo);
     setSaving(true);
     try {
+      // Gera título com IA baseado no prompt
+      const tituloIA = promptGerado ? await gerarTituloIA(promptGerado) : null;
+      const titulo = tituloIA || `${funil.nome} · ${angulo.nome} · ${tipoObj?.label || tipo}`;
+
       await fetch(`${SB_URL}/rest/v1/kanban_cards`, {
         method: "POST",
         headers: { ...SB_HEADERS, Prefer: "return=minimal" },
         body: JSON.stringify({
-          titulo: `${funil.nome} · ${angulo.nome} · ${tipoObj?.label || tipo}`,
+          titulo,
           funil_id: funil.id,
           funil_nome: funil.nome,
           funil_cor: funil.cor,
