@@ -229,6 +229,30 @@ export const FUNIS_BASE = [
     instrucao_extra: "Dados reais: 27 contratos + R$5,6mi em 2 dias. Preço sobe com andamento da obra.",
     custom: false,
   },
+  {
+    id: "mcmv",
+    nome: "Ilhabela MCMV",
+    subtitulo: "Público geral · Faixas 1–4 MCMV",
+    slug: "parque-ilhabela-mcmv",
+    url: "https://ilhabela-mcmv.vercel.app/",
+    paginas: [
+      "P1 — Calculadora de faixa MCMV (renda → descobre subsídio + faixa)",
+      "P2 — Simulador de parcela (renda + FGTS → parcela real) + 4 passos visuais",
+      "P3 — Galeria + FAQ MCMV + formulário de simulação gratuita",
+    ],
+    visual: "Azul/índigo escuro na P1 (governo, seriedade), branco limpo na P2, azul institucional na P3. Fonte Syne. Tom educativo e oficial.",
+    tom: "Educativo e acessível — como um despachante de confiança que explica o que você tem direito e como usar",
+    protagonista: "Qualquer pessoa com renda de até R$13.000 que nunca soube que o governo pode pagar parte do seu apê",
+    angulos_recomendados: ["nova_descoberta", "contrario", "teaser_mecanismo", "problema_solucao", "pop_quiz"],
+    cor: "indigo",
+    inicio_recomendado: "nova_descoberta",
+    instrucao_extra: `Funil MCMV — 3 páginas gamificadas.
+P1: Calculadora de faixa (renda familiar → descobre faixa 1/2/3/4 e benefício). Faixas: F1 até R$3.200 (subsídio 95%, parcela ~R$80/mês), F2 até R$5.000 (subsídio parcial), F3 até R$9.600 (juros 8,16% a.a.), F4 até R$13.000 (juros 9,5% a.a.). Imóvel R$185.000.
+P2: Simulador de parcela com renda + FGTS. Fórmula real da Caixa. 4 passos: (1) Governo entra com subsídio → (2) FGTS cobre entrada → (3) financia restante pela Caixa → (4) chaves na mão. Atualização abril/2026: limites de faixa reajustados.
+P3: Galeria completa do empreendimento (fachada, piscina, salão, playground, quarto, área privativa). FAQ MCMV: primeiro imóvel, composição de renda, nome sujo, prazo 420 meses, FGTS a cada 2 anos. Formulário CTA para simulação real com Pedro via WhatsApp.
+Tom: educativo, acessível, institucional mas humano. Nunca alarmista. O inimigo é a desinformação, não o governo.`,
+    custom: false,
+  },
 ];
 
 export function getFunis() {
@@ -306,6 +330,18 @@ export const VSLS = [
       { tempo: "0:50–1:20", bloco: "Produto",       descricao: "Apresentação rápida com imagens reais" },
       { tempo: "1:20–1:40", bloco: "Prova social",  descricao: "Dado + depoimento curto" },
       { tempo: "1:40–2:00", bloco: "CTA",           descricao: "Chamada direta e urgente para o formulário" },
+    ],
+  },
+  {
+    id: "vsl5", funil_id: "mcmv", nome: "VSL MCMV", duracao: "2–3 min", tom: "Educativo e acessível",
+    estrutura: [
+      { tempo: "0:00–0:15", bloco: "Gancho",     descricao: "O governo pode pagar parte do seu apê — você sabe quanto?" },
+      { tempo: "0:15–0:35", bloco: "Revelação",  descricao: "Apresenta o MCMV como programa real com faixas de renda" },
+      { tempo: "0:35–1:00", bloco: "Mecanismo",  descricao: "4 passos: subsídio → FGTS → financiamento Caixa → chaves" },
+      { tempo: "1:00–1:30", bloco: "Simulação",  descricao: "Exemplo numérico real: renda R$3.500 → parcela ~R$80/mês" },
+      { tempo: "1:30–2:00", bloco: "Produto",    descricao: "Parque Ilha Bela como destino elegível para todas as faixas" },
+      { tempo: "2:00–2:30", bloco: "Prova",      descricao: "27 contratos em 2 dias + depoimento de comprador via MCMV" },
+      { tempo: "2:30–3:00", bloco: "CTA",        descricao: "Simulação gratuita com Pedro via WhatsApp" },
     ],
   },
 ];

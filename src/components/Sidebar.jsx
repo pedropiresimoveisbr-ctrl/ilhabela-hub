@@ -2,6 +2,7 @@ const COR_MAP = {
   green: "#22c55e", amber: "#f59e0b", blue: "#3b82f6",
   red: "#ef4444", purple: "#a855f7", teal: "#14b8a6",
   orange: "#f97316", indigo: "#6366f1", slate: "#94a3b8",
+  yellow: "#eab308", rose: "#f43f5e",
 };
 
 const NAV = [

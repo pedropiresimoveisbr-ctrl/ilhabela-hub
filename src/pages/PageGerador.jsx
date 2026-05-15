@@ -41,18 +41,22 @@ export default function PageGerador({ funis = [] }) {
 
   function salvarKanban() {
     if (!funil || !angulo) return;
+    const tipoObj = TIPOS.find(t => t.id === tipo);
     const cards = JSON.parse(localStorage.getItem("kanban_cards") || "[]");
     cards.unshift({
       id: Date.now(),
-      titulo: `${funil.nome} · ${angulo.nome} · ${TIPOS.find(t => t.id === tipo)?.label || tipo}`,
+      titulo: `${funil.nome} · ${angulo.nome} · ${tipoObj?.label || tipo}`,
       funil_id: funil.id,
       funil_nome: funil.nome,
       funil_cor: funil.cor,
       angulo_id: angulo.id,
       angulo_nome: angulo.nome,
       angulo_emoji: angulo.emoji,
-      tipo,
-      hook: "", roas: "", notas: promptGerado ? "(prompt gerado)" : "",
+      tipo_id: tipo,
+      tipo_label: tipoObj?.label || tipo,
+      tipo_icon: tipoObj?.icon || "📄",
+      hook: "", roas: "", notas: "",
+      roteiro: promptGerado || "",
       coluna: "a_testar",
       criado: new Date().toLocaleDateString("pt-BR"),
     });
