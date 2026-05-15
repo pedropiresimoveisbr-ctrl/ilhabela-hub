@@ -56,7 +56,8 @@ export default function PageGerador({ funis = [] }) {
       tipo_label: tipoObj?.label || tipo,
       tipo_icon: tipoObj?.icon || "📄",
       hook: "", roas: "", notas: "",
-      roteiro: promptGerado || "",
+      narracao: promptGerado || "",
+      legenda: "",
       coluna: "a_testar",
       criado: new Date().toLocaleDateString("pt-BR"),
     });
