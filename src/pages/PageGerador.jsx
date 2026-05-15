@@ -1,6 +1,10 @@
 import { useState, useRef } from "react";
 import { ANGULOS, TIPOS, gerarPrompt } from "../data";
 
+const SB_URL = "https://okwqamdrgwbfyncqcide.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9rd3FhbWRyZ3diZnluY3FjaWRlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2MTg4NjksImV4cCI6MjA5NDE5NDg2OX0.g31os5TAoLaEPHyGGTg67r6BmxnoSxemMRklkO3d9zM";
+const SB_HEADERS = { "Content-Type": "application/json", apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` };
+
 const COR_MAP = {
   green: "#22c55e", amber: "#f59e0b", blue: "#3b82f6", red: "#ef4444",
   purple: "#a855f7", teal: "#14b8a6", orange: "#f97316", indigo: "#6366f1",
@@ -14,6 +18,7 @@ export default function PageGerador({ funis = [] }) {
   const [extras, setExtras] = useState("");
   const [copiado, setCopiado] = useState(false);
   const [savedOk, setSavedOk] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [copyExistente, setCopyExistente] = useState("");
   const promptRef = useRef(null);
 
@@ -39,31 +44,38 @@ export default function PageGerador({ funis = [] }) {
     });
   }
 
-  function salvarKanban() {
-    if (!funil || !angulo) return;
+  async function salvarKanban() {
+    if (!funil || !angulo || saving) return;
     const tipoObj = TIPOS.find(t => t.id === tipo);
-    const cards = JSON.parse(localStorage.getItem("kanban_cards") || "[]");
-    cards.unshift({
-      id: Date.now(),
-      titulo: `${funil.nome} · ${angulo.nome} · ${tipoObj?.label || tipo}`,
-      funil_id: funil.id,
-      funil_nome: funil.nome,
-      funil_cor: funil.cor,
-      angulo_id: angulo.id,
-      angulo_nome: angulo.nome,
-      angulo_emoji: angulo.emoji,
-      tipo_id: tipo,
-      tipo_label: tipoObj?.label || tipo,
-      tipo_icon: tipoObj?.icon || "📄",
-      hook: "", roas: "", notas: "",
-      narracao: promptGerado || "",
-      legenda: "",
-      coluna: "a_testar",
-      criado: new Date().toLocaleDateString("pt-BR"),
-    });
-    localStorage.setItem("kanban_cards", JSON.stringify(cards));
-    setSavedOk(true);
-    setTimeout(() => setSavedOk(false), 2500);
+    setSaving(true);
+    try {
+      await fetch(`${SB_URL}/rest/v1/kanban_cards`, {
+        method: "POST",
+        headers: { ...SB_HEADERS, Prefer: "return=minimal" },
+        body: JSON.stringify({
+          titulo: `${funil.nome} · ${angulo.nome} · ${tipoObj?.label || tipo}`,
+          funil_id: funil.id,
+          funil_nome: funil.nome,
+          funil_cor: funil.cor,
+          angulo_id: angulo.id,
+          angulo_nome: angulo.nome,
+          angulo_emoji: angulo.emoji,
+          tipo_id: tipo,
+          tipo_label: tipoObj?.label || tipo,
+          tipo_icon: tipoObj?.icon || "📄",
+          hook: "", roas: "", notas: "",
+          narracao: promptGerado || "",
+          legenda: "",
+          link_video: "",
+          coluna: "a_testar",
+        }),
+      });
+      setSavedOk(true);
+      setTimeout(() => setSavedOk(false), 2500);
+    } catch (e) {
+      console.error("Erro ao salvar no Kanban:", e);
+    }
+    setSaving(false);
   }
 
   const podeGerar = funilId && anguloId;
@@ -306,12 +318,12 @@ export default function PageGerador({ funis = [] }) {
                     onClick={salvarKanban}
                     style={{
                       fontSize: 11, padding: "6px 12px", borderRadius: 6,
-                      border: savedOk ? "1px solid #6366f155" : "1px solid #222",
-                      background: savedOk ? "#6366f122" : "#1a1a1a",
-                      color: savedOk ? "#6366f1" : "#888", cursor: "pointer",
+                      border: savedOk ? "1px solid #22c55e55" : "1px solid #222",
+                      background: savedOk ? "#22c55e22" : "#1a1a1a",
+                      color: savedOk ? "#22c55e" : "#888", cursor: "pointer",
                     }}
                   >
-                    {savedOk ? "✓ No Kanban!" : "▤ Salvar no Kanban"}
+                    {saving ? "Salvando..." : savedOk ? "✓ Salvo!" : "▤ Salvar no Kanban"}
                   </button>
                   <button
                     onClick={copiar}
