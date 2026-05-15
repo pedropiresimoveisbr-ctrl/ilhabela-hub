@@ -334,15 +334,17 @@ export default function PageKanban({ funis = [] }) {
             {/* Header */}
             <div style={{ padding: "18px 20px", borderBottom: "1px solid #1a1a1a", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexShrink: 0 }}>
               <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 9, color: "#444", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 4 }}>Título</div>
                 <input
                   value={editTitulo}
                   onChange={e => setEditTitulo(e.target.value)}
                   style={{
                     fontSize: 14, fontWeight: 700, color: "#fff",
-                    background: "transparent", border: "none",
-                    borderBottom: "1px solid #333", outline: "none",
-                    width: "100%", marginBottom: 8, padding: "2px 0",
-                    lineHeight: 1.4,
+                    background: "#1a1a1a", border: "1px solid #333",
+                    borderRadius: 8, outline: "none",
+                    width: "100%", marginBottom: 10,
+                    padding: "8px 12px", lineHeight: 1.4,
+                    fontFamily: "inherit",
                   }}
                 />
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
