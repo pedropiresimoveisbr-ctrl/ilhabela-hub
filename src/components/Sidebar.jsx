@@ -6,10 +6,11 @@ const COR_MAP = {
 };
 
 const NAV = [
-  { id: "dashboard", label: "Dashboard",      icon: "⊞" },
-  { id: "gerador",   label: "Gerar Prompt",   icon: "✦", destaque: true },
-  { id: "kanban",    label: "Criativos",       icon: "▤" },
-  { id: "metricas",  label: "Métricas",        icon: "📊" },
+  { id: "dashboard",  label: "Dashboard",    icon: "⊞" },
+  { id: "gerador",    label: "Gerar Prompt", icon: "✦", destaque: true },
+  { id: "kanban",     label: "Criativos",    icon: "▤" },
+  { id: "lancamento", label: "Lançamento",   icon: "🚀" },
+  { id: "metricas",   label: "Métricas",     icon: "📊" },
 ];
 
 export default function Sidebar({ page, navegar, funis = [] }) {
@@ -92,4 +93,3 @@ export default function Sidebar({ page, navegar, funis = [] }) {
     </aside>
   );
 }
-

@@ -464,45 +464,82 @@ Indique sempre de qual página é cada bloco. Copy pronto para colar diretamente
 Duração: ${funil.id === "urgencia" ? "2 minutos" : funil.id === "fgts" ? "2–3 minutos" : funil.id === "senior" ? "3–5 minutos" : "3–4 minutos"}
 Tom: ${funil.tom}
 
-Para cada bloco entregue:
-[TEMPO] — ex: 0:00–0:20
-[TELA] — o que aparece visualmente (texto sobreposto, imagem, animação)
-[LOCUÇÃO] — exatamente o que o locutor fala (escrito para ser falado)
-[B-ROLL] — sugestão de imagem ou vídeo de fundo
+Entregue o script em formato de tabela de produção. Para cada bloco use EXATAMENTE esta estrutura:
 
-Ao final entregue também:
-[THUMBNAIL] — sugestão de imagem de capa
-[LEGENDA CURTA] — 1 linha para descrição do vídeo
+━━ [BLOCO: nome] | [TEMPO: 0:00–0:20] ━━
 
-Script pronto para teleprompter e locução direta.`,
+🎙 FALA:
+(exatamente o que será dito em frente à câmera ou em off — linguagem oral, como se estivesse falando, sem pontuação formal)
+
+📱 TELA:
+(o que aparece visualmente: texto sobreposto, imagem, cor de fundo, animação, legenda)
+
+🎬 DIREÇÃO:
+(ângulo de câmera, corte, transição, ritmo — ex: câmera frontal próxima, corte seco, zoom in lento)
+
+🖼 B-ROLL:
+(sugestão de imagem ou vídeo de fundo se necessário)
+
+---
+
+Blocos obrigatórios: GANCHO → DOR → AGITAÇÃO → VIRADA → SOLUÇÃO → PROVA → OFERTA → CTA
+
+Ao final entregue:
+[THUMBNAIL] — descrição da imagem de capa
+[LEGENDA DO VÍDEO] — 1 linha para descrição`,
 
     reels: `TIPO: SCRIPT DE REELS (30–60 segundos)
 Tom: ${funil.tom}
 Público: ${funil.subtitulo}
 
-Entregue o script completo:
-[HOOK 0–3s] — frase ou ação que segura o scroll nos primeiros 3 segundos (visual + verbal)
-[DESENVOLVIMENTO 3–45s] — blocos curtos de 5–8 segundos cada
-[CTA FINAL] — chamada para ação nos últimos 5 segundos
-[TEXTO NA TELA] — lista de todos os textos sobrepostos ao vídeo
-[LEGENDA] — texto completo para a legenda do post com hashtags
-[SUGESTÃO DE TRILHA] — estilo de música ou som sugerido
+Entregue o script em formato de tabela de produção. Para cada momento use EXATAMENTE esta estrutura:
 
-Cada linha deve corresponder a uma fala ou ação de câmera.`,
+━━ [MOMENTO: nome] | [SEGUNDO: 0–3s] ━━
+
+🎙 FALA:
+(exatamente o que será dito — linguagem oral, direto, como se estivesse conversando)
+
+📱 TELA:
+(texto sobreposto, sticker, emoji, legenda animada — exatamente o que aparece na tela)
+
+🎬 DIREÇÃO:
+(tipo de enquadramento, movimento de câmera, ritmo do corte — ex: selfie próximo, câmera na mão, corte a cada 2s)
+
+---
+
+Momentos obrigatórios:
+HOOK (0–3s) → deve parar o scroll, visual + verbal simultâneos
+DESENVOLVIMENTO (3s–45s) → blocos de 5–8 segundos cada
+CTA (últimos 5s) → chamada clara para ação
+
+Ao final entregue:
+[LEGENDA] — texto completo para o post com hashtags
+[TRILHA] — estilo de música ou som sugerido`,
 
     stories: `TIPO: SEQUÊNCIA DE STORIES (5 stories)
 Tom: ${funil.tom}
 Público: ${funil.subtitulo}
 
-Para cada story:
-[STORY X de 5]
-[VISUAL] — o que aparece na tela (foto, vídeo, cor de fundo, sticker sugerido)
-[TEXTO PRINCIPAL] — texto sobreposto (máx 3 linhas)
-[ELEMENTO INTERATIVO] — enquete, caixa de pergunta, contagem regressiva, link (quando aplicável)
-[TRANSIÇÃO] — como conecta com o próximo story
+Entregue cada story em formato de tabela de produção:
 
-O story 5 deve ter CTA claro para formulário ou WhatsApp.
-Progressão obrigatória: gancho → desenvolvimento → revelação → prova → ação.`,
+━━ [STORY X de 5] ━━
+
+🎙 FALA / TEXTO PRINCIPAL:
+(o que é dito ou o texto principal que aparece — máx 3 linhas)
+
+📱 TELA:
+(fundo, foto ou vídeo sugerido, posição do texto, sticker ou elemento interativo)
+
+🎬 DIREÇÃO:
+(enquadramento, animação de entrada do texto, transição para o próximo story)
+
+🔘 INTERAÇÃO:
+(enquete, caixa de pergunta, contagem regressiva, link — quando aplicável)
+
+---
+
+Progressão obrigatória: GANCHO → DESENVOLVIMENTO → REVELAÇÃO → PROVA → AÇÃO
+O story 5 deve sempre ter CTA claro (WhatsApp ou link).`,
 
     carrossel: `TIPO: CARROSSEL (capa + 6 slides + encerramento)
 Tom: ${funil.tom}
