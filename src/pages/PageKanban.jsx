@@ -62,6 +62,9 @@ export default function PageKanban({ funis = [] }) {
   const [editHook,      setEditHook]      = useState("");
   const [editRoas,      setEditRoas]      = useState("");
   const [editLinkVideo, setEditLinkVideo] = useState("");
+  const [editTitulo,    setEditTitulo]    = useState("");
+  const [copiadoNarr,   setCopiadoNarr]  = useState(false);
+  const [copiadoLeg,    setCopiadoLeg]   = useState(false);
 
   const ANGULO_MAP = Object.fromEntries(ANGULOS.map(a => [a.id, a]));
   const TIPO_MAP   = Object.fromEntries(TIPOS.map(t => [t.id, t]));
@@ -87,6 +90,7 @@ export default function PageKanban({ funis = [] }) {
   function abrirDetalhe(card) {
     setDetalhe(card);
     setShowPrompt(false);
+    setEditTitulo(card.titulo      || "");
     setEditNarracao(card.narracao  || "");
     setEditLegenda(card.legenda    || "");
     setEditNotas(card.notas        || "");
@@ -102,6 +106,7 @@ export default function PageKanban({ funis = [] }) {
     if (!detalhe) return;
     setSaving(true);
     const patch = {
+      titulo: editTitulo,
       narracao: editNarracao, legenda: editLegenda,
       notas: editNotas, hook: editHook,
       roas: editRoas, link_video: editLinkVideo,
@@ -329,7 +334,17 @@ export default function PageKanban({ funis = [] }) {
             {/* Header */}
             <div style={{ padding: "18px 20px", borderBottom: "1px solid #1a1a1a", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexShrink: 0 }}>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", lineHeight: 1.4, marginBottom: 8 }}>{detalhe.titulo}</div>
+                <input
+                  value={editTitulo}
+                  onChange={e => setEditTitulo(e.target.value)}
+                  style={{
+                    fontSize: 14, fontWeight: 700, color: "#fff",
+                    background: "transparent", border: "none",
+                    borderBottom: "1px solid #333", outline: "none",
+                    width: "100%", marginBottom: 8, padding: "2px 0",
+                    lineHeight: 1.4,
+                  }}
+                />
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                   <Tag cor={COR_MAP[detalhe.funil_cor]}>{detalhe.funil_nome}</Tag>
                   <Tag>{detalhe.angulo_emoji} {detalhe.angulo_nome}</Tag>
@@ -411,7 +426,13 @@ export default function PageKanban({ funis = [] }) {
 
             {/* Narração / Roteiro */}
             <div style={{ padding: "16px 20px", borderBottom: "1px solid #1a1a1a" }}>
-              <div style={{ fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 8 }}>🎙 Narração / Roteiro / Copy</div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                <div style={{ fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.07em" }}>🎙 Narração / Roteiro / Copy</div>
+                <button onClick={() => { navigator.clipboard.writeText(editNarracao); setCopiadoNarr(true); setTimeout(() => setCopiadoNarr(false), 2000); }}
+                  style={{ fontSize: 10, padding: "3px 10px", borderRadius: 5, border: copiadoNarr ? "1px solid #22c55e55" : "1px solid #222", background: copiadoNarr ? "#22c55e22" : "#1a1a1a", color: copiadoNarr ? "#22c55e" : "#555", cursor: "pointer" }}>
+                  {copiadoNarr ? "✓ Copiado" : "Copiar"}
+                </button>
+              </div>
               <textarea value={editNarracao} onChange={e => setEditNarracao(e.target.value)}
                 placeholder="Cole aqui o roteiro, script ou copy gerada pelo ChatGPT..."
                 style={{ ...inp, minHeight: 200, resize: "vertical", background: "#111", lineHeight: 1.7, fontSize: 12 }} />
@@ -419,7 +440,13 @@ export default function PageKanban({ funis = [] }) {
 
             {/* Legenda */}
             <div style={{ padding: "16px 20px", borderBottom: "1px solid #1a1a1a" }}>
-              <div style={{ fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 8 }}>✍️ Legenda (feed / stories)</div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                <div style={{ fontSize: 10, color: "#555", textTransform: "uppercase", letterSpacing: "0.07em" }}>✍️ Legenda (feed / stories)</div>
+                <button onClick={() => { navigator.clipboard.writeText(editLegenda); setCopiadoLeg(true); setTimeout(() => setCopiadoLeg(false), 2000); }}
+                  style={{ fontSize: 10, padding: "3px 10px", borderRadius: 5, border: copiadoLeg ? "1px solid #22c55e55" : "1px solid #222", background: copiadoLeg ? "#22c55e22" : "#1a1a1a", color: copiadoLeg ? "#22c55e" : "#555", cursor: "pointer" }}>
+                  {copiadoLeg ? "✓ Copiado" : "Copiar"}
+                </button>
+              </div>
               <textarea value={editLegenda} onChange={e => setEditLegenda(e.target.value)}
                 placeholder="Cole aqui a legenda gerada..."
                 style={{ ...inp, minHeight: 100, resize: "vertical", background: "#111", lineHeight: 1.7, fontSize: 12 }} />
